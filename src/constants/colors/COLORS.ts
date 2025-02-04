@@ -1,0 +1,20 @@
+const COLORS = {
+  DEEP_SEA: "#2D3E76",
+  BLUE_PASTEL: "#6B9AC4",
+  RED: "#FF597B",
+  GREEN: "#3ECF3B",
+  BLUE: "#4059AD",
+  BLUE_PASTEL_HOVER: "#337ccf",
+  YELLOW: "#EBE76C",
+  DARK_BLUE: "#3F3D56",
+  GRAY: "#61677a",
+  GRAY_DARK: "#4d5261",
+  GRAY_PASTEL: "#d8d9da",
+  RED_PINK: "#ff0054",
+  RED_PINK_50: "#FF4785",
+  RED_PINK_DARK: "#8F0030",
+  ONYX: "#403F4C",
+  RED_CRAYOLA: "#E84855",
+  NAPLES_YELLOW: "#F9DC5C",
+};
+export default COLORS;
