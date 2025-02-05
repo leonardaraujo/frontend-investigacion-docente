@@ -36,14 +36,14 @@ const SharedLayout = () => {
           />
           <MenuGrid>
             <CustomNavLink to={"home"}>Home</CustomNavLink>{" "}
-            <CustomNavLink to={"send-schedule-by-email"}>
-              Envio de cronograma
+            <CustomNavLink to={"my-investigations"}>
+              Mi investigacion
             </CustomNavLink>
-            <CustomNavLink to={"upload-documents"}>
-              Subir avances de informes e informe final
+            <CustomNavLink to={"advances"}>
+              Presentacion de avances
             </CustomNavLink>
-            <CustomNavLink to={"notifications"}>
-              Notificaciones
+            <CustomNavLink to={"final-present"}>
+              Presentacion de avance final
             </CustomNavLink>
             <Button onClick={handleSignOut}>Cerrar sesion</Button>
           </MenuGrid>

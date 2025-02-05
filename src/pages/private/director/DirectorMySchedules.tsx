@@ -2,6 +2,17 @@ import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import { fGetEntregasByPeriodo } from "../../../fetch/fEntregasPeriodo";
 import { fGetAllPeriodos } from "../../../fetch/fPeriodoInvestigacion";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Typography,
+  Button,
+} from "@mui/material";
 
 const DirectorMySchedules = () => {
   const [periodos, setPeriodos] = useState([]);
@@ -23,7 +34,6 @@ const DirectorMySchedules = () => {
     if (selectedPeriodo) {
       // Fetch entregas by selected periodo
       fGetEntregasByPeriodo(selectedPeriodo.value).then((response) => {
-        console.log(response);
         setEntregas(response.data);
       });
     }
@@ -35,7 +45,9 @@ const DirectorMySchedules = () => {
 
   return (
     <div>
-      <h1>Director My Schedules</h1>
+      <Typography variant="h4" gutterBottom>
+        Director My Schedules
+      </Typography>
       <Select
         options={periodos}
         value={selectedPeriodo}
@@ -43,38 +55,55 @@ const DirectorMySchedules = () => {
         placeholder="Seleccione un periodo"
       />
       <div>
-        <h2>Entregas</h2>
+        <Typography variant="h5" gutterBottom>
+          Entregas
+        </Typography>
         {entregas.length > 0 ? (
-          <ul>
-            {entregas.map((entrega) => (
-              <li key={entrega.id}>
-                <p>Entrega ID: {entrega.id}</p>
-                <p>Numero de Entrega: {entrega.numero_entrega}</p>
-                <p>Estado: {entrega.EntregaEstado.nombre}</p>
-                <p>Tipo: {entrega.EntregaTipo.nombre}</p>
-                <p>
-                  Fecha de Entrega:{" "}
-                  {new Date(entrega.fecha_entrega).toLocaleDateString()}
-                </p>
-                <p>
-                  Fecha de Revisión:{" "}
-                  {entrega.fecha_revision
-                    ? new Date(entrega.fecha_revision).toLocaleDateString()
-                    : "N/A"}
-                </p>
-                {entrega.ProyectoUsuario && (
-                  <div>
-                    <p>Usuario: {entrega.ProyectoUsuario.User.name}</p>
-                    <p>Proyecto: {entrega.ProyectoUsuario.Proyecto.nombre}</p>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Usuario</TableCell>
+                  <TableCell>Proyecto</TableCell>
+                  <TableCell>Numero de Entrega</TableCell>
+                  <TableCell>Estado</TableCell>
+                  <TableCell>Tipo</TableCell>
+                  <TableCell>Fecha de Entrega</TableCell>
+                  <TableCell>Fecha de Revisión</TableCell>
+                  <TableCell>Fecha de Inicio de Admisión</TableCell>
+                  <TableCell>Fecha de Fin de Admisión</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {entregas.map((entrega) => (
+                  <TableRow key={entrega.id}>
+                    <TableCell>{entrega.ProyectoUsuario.User.name}</TableCell>
+                    <TableCell>{entrega.ProyectoUsuario.Proyecto.nombre}</TableCell>
+                    <TableCell>{entrega.numero_entrega}</TableCell>
+                    <TableCell>{entrega.EntregaEstado.nombre}</TableCell>
+                    <TableCell>{entrega.EntregaTipo.nombre}</TableCell>
+                    <TableCell>{entrega.fecha_entrega
+                        ? new Date(entrega.fecha_entrega).toLocaleDateString()
+                        : "N/A"}</TableCell>
+                    <TableCell>
+                      {entrega.fecha_revision
+                        ? new Date(entrega.fecha_revision).toLocaleDateString()
+                        : "N/A"}
+                    </TableCell>
+                    <TableCell>{new Date(entrega.admision_entrega_fecha_init).toLocaleDateString()}</TableCell>
+                    <TableCell>{new Date(entrega.admision_entrega_fecha_finish).toLocaleDateString()}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         ) : (
-          <p>No hay entregas para el periodo seleccionado.</p>
+          <Typography>No hay entregas para el periodo seleccionado.</Typography>
         )}
       </div>
+      <Button variant="contained" color="primary" style={{ marginTop: '20px' }}>
+        Enviar Correos
+      </Button>
     </div>
   );
 };
