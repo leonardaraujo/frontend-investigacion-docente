@@ -19,7 +19,7 @@ function App() {
         </Route>
         <Route
           path="*"
-          element={<p>awazszzzdsadsdasddddddddddddddddddddddddddddddd</p>}
+          element={<p>No existe esta ruta</p>}
         ></Route>
       </Routes>
     </Router>

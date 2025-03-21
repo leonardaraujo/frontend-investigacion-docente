@@ -15,6 +15,6 @@ export const fGetUser = async (token: string | null) => {
 };
 
 export const fGetInvestigators = async () => {
-  const respond = await apiBackend.get("/data/usuarios/role/1");
+  const respond = await apiBackend.get("/data/get_investigators");
   return respond;
 };

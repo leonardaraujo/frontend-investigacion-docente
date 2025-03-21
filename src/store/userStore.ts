@@ -4,9 +4,9 @@ interface IUser {
   id: number;
   email: string;
   name: string;
-  apellido_paterno: string;
-  apellido_materno: string;
-  role_id: number;
+  paternal_surname: string;
+  maternal_surname: string;
+  rol_id: number;
 }
 interface userStore extends IUser {
   setUser: (payload: IUser) => void;
@@ -16,18 +16,18 @@ const useUserStore = create<userStore>((set) => ({
   id: 0,
   email: "",
   name: "",
-  apellido_paterno: "",
-  apellido_materno: "",
-  role_id: 0,
+  paternal_surname: "",
+  maternal_surname: "",
+  rol_id: 0,
   setUser: (payload: IUser) =>
     set(
       (): IUser => ({
         id: payload.id,
         email: payload.email,
         name: payload.name,
-        apellido_paterno: payload.apellido_paterno,
-        apellido_materno: payload.apellido_materno,
-        role_id: payload.role_id,
+        paternal_surname: payload.paternal_surname,
+        maternal_surname: payload.maternal_surname,
+        rol_id: payload.rol_id,
       })
     ),
   deleteUser: () =>
@@ -36,9 +36,9 @@ const useUserStore = create<userStore>((set) => ({
         id: 0,
         email: "",
         name: "",
-        apellido_paterno: "",
-        apellido_materno: "",
-        role_id: 0,
+        paternal_surname: "",
+        maternal_surname: "",
+        rol_id: 0,
       })
     ),
 }));

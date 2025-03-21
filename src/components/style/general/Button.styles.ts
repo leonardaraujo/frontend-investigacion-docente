@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../../constants/colors/COLORS";
+import { PRINCIPAL_COLOR_CONF } from "../../../conf/COLORS.conf";
 type props = {
   $btype?: "danger" | "normal" | "success" | "ns";
 };
@@ -16,8 +17,8 @@ export const StyledButton = styled.button<props>`
     } else if ($btype == "success") {
       return COLORS.GREEN;
     } else if ($btype == "ns") {
-      return "#007400";
-    } else {
+      return PRINCIPAL_COLOR_CONF;
+    } else {  
       return COLORS.DARK_BLUE;
     }
   }};

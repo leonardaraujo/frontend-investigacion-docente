@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 export const LayoutLoginCard = styled.div`
-  width: 600px;
-  height: 400px;
+  width: 650px;
+  height: 450px;
   display: grid;
   grid-template-columns: 50% 50%;
 `;
@@ -10,7 +10,7 @@ export const LayoutLoginCardInput = styled.div`
   display: grid;
   height: 100%;
   width: 100%;
-  grid-template-rows: 20% 65% 10%;
+  grid-template-rows: 15% 65% 10% 10%;
   background-color: #BDBCC8;
   padding: 20px;
 `;

@@ -1,13 +1,13 @@
 import styled from "styled-components";
+import { PRINCIPAL_COLOR_CONF } from "../../../conf/COLORS.conf";
 
 export const CreateScheduleTable = styled.table`
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
 `;
 
 export const TableHead = styled.thead`
-  background-color: #006600;
+  background-color: ${PRINCIPAL_COLOR_CONF};
 `;
 
 export const TableBody = styled.tbody`
