@@ -1,5 +1,5 @@
-export const PRINCIPAL_COLOR_CONF = "#006600";
+export const PRINCIPAL_COLOR_CONF = "#1c8adb";
 
-export const SECONDARY_COLOR_CONF = "#FECB00";
+export const SECONDARY_COLOR_CONF = "#DBEDFA";
 
-export const NAVBAR_PRINCIPAL_COLOR_CONF = "#006600";
+export const NAVBAR_PRINCIPAL_COLOR_CONF = "#1568A2";

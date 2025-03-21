@@ -8,9 +8,9 @@ export const LOGO_IMAGES = {
 	UNCP_LOGO: UncpLogo,
 	// Puedes agregar variantes del logo aquí
 	UNIVERSIDAD_GPT_LOGO: UniversidadGPTLogo,
-	UNIVERSIDAD_LOGO: UncpLogo,
-	UNIVERSIDAD_LOGO_LOGIN: UncpLogo,
-	UNIVERSIDAD_DOC_WATERMARK_LOGO: UncpLogoPNG,    
+	UNIVERSIDAD_LOGO: UniversidadGPTLogo,
+	UNIVERSIDAD_LOGO_LOGIN: UniversidadGPTLogoPNGBlack,
+	UNIVERSIDAD_DOC_WATERMARK_LOGO: UniversidadGPTLogoPNGBlack,    
 };
 
 // Configuración de estilos para logos
