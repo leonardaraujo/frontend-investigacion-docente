@@ -35,6 +35,7 @@ import {
 	DialogContent,
 	DialogContentText,
 	DialogTitle,
+	CircularProgress,
 	Typography,
 } from "@mui/material";
 import { fCreateSchedule } from "../../../fetch/fSchedules";
@@ -80,6 +81,9 @@ const DirectorCreateSchedule = () => {
 	const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
 	const [openDeleteConfirmDialog, setOpenDeleteConfirmDialog] = useState(false);
 	const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
+
+	const [isCreating, setIsCreating] = useState(false);
+
 	useEffect(() => {
 		fetchInitialData(setLastPeriod, setInvestigators, setLineasInvestigacion);
 	}, []);
@@ -96,6 +100,9 @@ const DirectorCreateSchedule = () => {
 	};
 
 	const handleCreateSchedule = async () => {
+		if (isCreating) return; // Evitar múltiples llamadas
+
+		setIsCreating(true); // Deshabilitar el botón inmediatamente
 		try {
 			const response = await fCreateSchedule(scheduleCart);
 			console.log("Schedule created successfully:", response);
@@ -105,8 +112,14 @@ const DirectorCreateSchedule = () => {
 		} catch (error) {
 			console.error("Error creating schedule:", error);
 			toast.error("Error al crear el cronograma");
+		} finally {
+			setOpenConfirmDialog(false);
+			// Retrasar la restauración del estado para asegurar que el diálogo
+			// se cierre completamente antes de permitir otra acción
+			setTimeout(() => {
+				setIsCreating(false);
+			}, 500);
 		}
-		setOpenConfirmDialog(false);
 	};
 	const handleConfirmCreateSchedule = () => {
 		setOpenConfirmDialog(true);
@@ -333,7 +346,13 @@ const DirectorCreateSchedule = () => {
 					<Button onClick={handleCloseConfirmDialog} color="primary">
 						Cancelar
 					</Button>
-					<Button onClick={handleCreateSchedule} color="primary" autoFocus>
+					<Button
+						onClick={handleCreateSchedule}
+						color="primary"
+						autoFocus
+						disabled={isCreating}
+						startIcon={isCreating ? <CircularProgress size={20} /> : null}
+					>
 						Confirmar
 					</Button>
 				</DialogActions>
