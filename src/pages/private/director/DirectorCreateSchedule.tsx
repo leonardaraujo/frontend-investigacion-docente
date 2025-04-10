@@ -33,6 +33,7 @@ import {
 	Dialog,
 	DialogActions,
 	DialogContent,
+	CircularProgress,
 	DialogContentText,
 	DialogTitle,
 	CircularProgress,
@@ -81,9 +82,7 @@ const DirectorCreateSchedule = () => {
 	const [openConfirmDialog, setOpenConfirmDialog] = useState(false);
 	const [openDeleteConfirmDialog, setOpenDeleteConfirmDialog] = useState(false);
 	const [selectedUserId, setSelectedUserId] = useState<number | null>(null);
-
 	const [isCreating, setIsCreating] = useState(false);
-
 	useEffect(() => {
 		fetchInitialData(setLastPeriod, setInvestigators, setLineasInvestigacion);
 	}, []);
